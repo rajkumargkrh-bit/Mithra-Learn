@@ -1,11 +1,9 @@
-let lessons=[];const messagesEl=document.getElementById("messages");const input=document.getElementById("messageInput");const form=document.getElementById("chatForm");
-async function loadLessons(){try{const r=await fetch("../data/default-data.json");lessons=(await r.json()).topics||[]}catch{lessons=[]}}
-function addMessage(role,content,save=true){const el=document.createElement("div");el.className=`message ${role}`;el.innerHTML=`<small>${role==="user"?"You":"Mithra"}</small>${escapeHtml(content)}`;messagesEl.appendChild(el);messagesEl.scrollTop=messagesEl.scrollHeight;if(save&&getSettings().saveChat){const c=getChat();c.push({role,content,time:new Date().toISOString()});saveChat(c)}}
-function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
-function answer(q){const text=q.toLowerCase();let found=lessons.find(x=>x.keywords.some(k=>text.includes(k.toLowerCase())));if(found)return found.answer;return "I don't have a local lesson for that yet. Try asking about Science, Maths, English, Computer, or General Knowledge."}
-function renderHistory(){messagesEl.innerHTML="";const c=getChat();if(!c.length){addMessage("mithra","Hi! I'm Mithra. What would you like to learn today?",false);return}c.forEach(x=>addMessage(x.role==="assistant"?"mithra":"user",x.content,false))}
-form.addEventListener("submit",e=>{e.preventDefault();const q=input.value.trim();if(!q)return;addMessage("user",q);input.value="";const s=getSettings();setTimeout(()=>addMessage("mithra",answer(q)),s.typing?450:0)});
-document.querySelectorAll(".suggestions button").forEach(b=>b.addEventListener("click",()=>{input.value=b.textContent;form.requestSubmit()}));
-document.querySelectorAll(".topic").forEach(b=>b.addEventListener("click",()=>{input.value=`Tell me about ${b.dataset.topic}`;form.requestSubmit()}));
-function clear(){saveChat([]);renderHistory();toast("Chat history cleared")}document.getElementById("clearChat")?.addEventListener("click",clear);document.getElementById("clearChatTop")?.addEventListener("click",clear);
-loadLessons().then(renderHistory);
+let topics=[];const msg=document.getElementById("messages"),input=document.getElementById("input");
+async function load(){try{topics=(await (await fetch("../data/default-data.json")).json()).topics}catch{topics=[]}}
+function safe(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function add(role,text,store=true){const e=document.createElement("div");e.className="message "+role;e.innerHTML=`<small>${role==="user"?"You":"Mithra"}</small>${safe(text)}`;msg.appendChild(e);msg.scrollTop=msg.scrollHeight;if(store&&settings().saveChat){const c=chats();c.push({role,content:text,time:Date.now()});set(K.chat,c)}}
+function reply(q){const t=q.toLowerCase();const hit=topics.find(x=>x.keywords.some(k=>t.includes(k)));return hit?hit.answer:"I don't have a local lesson for that yet. Try Science, Maths, English, Computer, or General Knowledge."}
+function render(){msg.innerHTML="";const c=chats();if(!c.length)add("mithra","Hi! I'm Mithra. What would you like to learn today?",false);else c.forEach(x=>add(x.role==="assistant"?"mithra":"user",x.content,false))}
+document.getElementById("form").addEventListener("submit",e=>{e.preventDefault();const q=input.value.trim();if(!q)return;add("user",q);input.value="";setTimeout(()=>add("mithra",reply(q)),settings().typing?400:0)});
+document.querySelectorAll(".suggestions button").forEach(b=>b.onclick=()=>{input.value=b.textContent;document.getElementById("form").requestSubmit()});
+function clear(){set(K.chat,[]);render();toast("Chat cleared")}document.getElementById("clearTop").onclick=clear;load().then(render);

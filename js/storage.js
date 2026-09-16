@@ -1,9 +1,4 @@
-const MITHRA_KEYS={settings:"mithra_settings",chat:"mithra_chat_history",saved:"mithra_saved_lessons",recent:"mithra_recent_topics"};
-function getData(key,fallback){try{const v=localStorage.getItem(key);return v===null?fallback:JSON.parse(v)}catch{return fallback}}
-function setData(key,value){localStorage.setItem(key,JSON.stringify(value))}
-function removeData(key){localStorage.removeItem(key)}
-function getSettings(){return getData(MITHRA_KEYS.settings,{theme:"system",saveChat:true,typing:true})}
-function saveSettings(s){setData(MITHRA_KEYS.settings,s)}
-function getChat(){return getData(MITHRA_KEYS.chat,[])}
-function saveChat(messages){setData(MITHRA_KEYS.chat,messages)}
-function clearAllData(){Object.values(MITHRA_KEYS).forEach(removeData)}
+const K={settings:"mithra_v2_settings",chat:"mithra_v2_chat",saved:"mithra_v2_saved",progress:"mithra_v2_progress"};
+function get(k,f=[]){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}}function set(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function settings(){return get(K.settings,{theme:"system",saveChat:true,typing:true})}function chats(){return get(K.chat,[])}function saved(){return get(K.saved,[])}function progress(){return get(K.progress,[])}
+function clearData(){Object.values(K).forEach(k=>localStorage.removeItem(k))}
