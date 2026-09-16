@@ -1,9 +1,0 @@
-let topics=[];const msg=document.getElementById("messages"),input=document.getElementById("input");
-async function load(){try{topics=(await (await fetch("../data/default-data.json")).json()).topics}catch{topics=[]}}
-function safe(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
-function add(role,text,store=true){const e=document.createElement("div");e.className="message "+role;e.innerHTML=`<small>${role==="user"?"You":"Mithra"}</small>${safe(text)}`;msg.appendChild(e);msg.scrollTop=msg.scrollHeight;if(store&&settings().saveChat){const c=chats();c.push({role,content:text,time:Date.now()});set(K.chat,c)}}
-function reply(q){const t=q.toLowerCase();const hit=topics.find(x=>x.keywords.some(k=>t.includes(k)));return hit?hit.answer:"I don't have a local lesson for that yet. Try Science, Maths, English, Computer, or General Knowledge."}
-function render(){msg.innerHTML="";const c=chats();if(!c.length)add("mithra","Hi! I'm Mithra. What would you like to learn today?",false);else c.forEach(x=>add(x.role==="assistant"?"mithra":"user",x.content,false))}
-document.getElementById("form").addEventListener("submit",e=>{e.preventDefault();const q=input.value.trim();if(!q)return;add("user",q);input.value="";setTimeout(()=>add("mithra",reply(q)),settings().typing?400:0)});
-document.querySelectorAll(".suggestions button").forEach(b=>b.onclick=()=>{input.value=b.textContent;document.getElementById("form").requestSubmit()});
-function clear(){set(K.chat,[]);render();toast("Chat cleared")}document.getElementById("clearTop").onclick=clear;load().then(render);
