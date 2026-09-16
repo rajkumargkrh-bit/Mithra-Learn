@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SolluEnglish — Unga AI Spoken English Friend</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- Top bar: back + progress -->
+  <header class="topbar" id="topbar">
+    <button class="back-btn" id="backBtn" aria-label="Back">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="progress-track" id="progressTrack">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </header>
+
+  <!-- Screens are rendered into this stage by script.js -->
+  <main class="stage" id="stage"></main>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

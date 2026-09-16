@@ -1,23 +1,37 @@
-# Mithra Learn-local V2 — Personal
+# SolluEnglish
 
-A mobile-first, single-user learning app. No backend, login or cloud database.
+A small onboarding + practice-chat demo for a Tamil/Tanglish spoken-English
+learning app. Pure HTML/CSS/JS, no build step, no backend — all user answers
+are saved in the browser's `localStorage`.
 
-## Features
-- Personal local chat
-- Local lesson library
-- Search
-- Saved lessons
-- Quick quiz
-- Progress tracking
-- Light/dark/system theme
-- JSON backup and restore
-- Local Storage
+## Files
+- `index.html` — page shell
+- `style.css` — dark, single-accent design system
+- `script.js` — screen flow, state, localStorage, mock chat
 
-## Run on mobile
-Open `index.html` through a local/static web server or hosting that serves the `data/default-data.json` file. A static hosting service can be used; no backend is required.
+## Run it locally
+Just open `index.html` in a browser — no server needed.
+(Or, for a local server: `python3 -m http.server` in this folder, then visit
+`http://localhost:8000`.)
 
-## Privacy
-V2 stores personal app data in the browser's Local Storage. Clearing browser/site data can remove it, so use Export Backup regularly.
+## Put it on GitHub Pages
+1. Create a new repo and push these three files to it.
+2. On GitHub: **Settings → Pages → Source → Deploy from a branch**, pick
+   `main` and `/ (root)`, then **Save**.
+3. GitHub gives you a link like `https://<username>.github.io/<repo>/` —
+   that's your live app.
 
-## Future optional upgrades
-AI API, voice input/output, PWA install/offline caching, richer notes and custom lesson creation.
+## What's saved to localStorage
+Key: `solluenglish_profile` →
+```json
+{ "partner": "yes|no", "level": "...", "goal": "...", "streak": 1, "joinedAt": "..." }
+```
+Use the **Reset profile** button on the home screen to clear it and
+re-run onboarding.
+
+## Extending it
+- Swap the emoji avatar in `companion()` (script.js) for a real illustration.
+- Replace `NOVA_REPLIES` in script.js with real API calls once you wire up
+  a backend or an LLM.
+- Add more onboarding questions by adding a new key to `ONBOARDING_STEPS`
+  and a matching `screen...()` renderer + entry in `RENDERERS`.
