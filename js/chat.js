@@ -1,0 +1,11 @@
+let lessons=[];const messagesEl=document.getElementById("messages");const input=document.getElementById("messageInput");const form=document.getElementById("chatForm");
+async function loadLessons(){try{const r=await fetch("../data/default-data.json");lessons=(await r.json()).topics||[]}catch{lessons=[]}}
+function addMessage(role,content,save=true){const el=document.createElement("div");el.className=`message ${role}`;el.innerHTML=`<small>${role==="user"?"You":"Mithra"}</small>${escapeHtml(content)}`;messagesEl.appendChild(el);messagesEl.scrollTop=messagesEl.scrollHeight;if(save&&getSettings().saveChat){const c=getChat();c.push({role,content,time:new Date().toISOString()});saveChat(c)}}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function answer(q){const text=q.toLowerCase();let found=lessons.find(x=>x.keywords.some(k=>text.includes(k.toLowerCase())));if(found)return found.answer;return "I don't have a local lesson for that yet. Try asking about Science, Maths, English, Computer, or General Knowledge."}
+function renderHistory(){messagesEl.innerHTML="";const c=getChat();if(!c.length){addMessage("mithra","Hi! I'm Mithra. What would you like to learn today?",false);return}c.forEach(x=>addMessage(x.role==="assistant"?"mithra":"user",x.content,false))}
+form.addEventListener("submit",e=>{e.preventDefault();const q=input.value.trim();if(!q)return;addMessage("user",q);input.value="";const s=getSettings();setTimeout(()=>addMessage("mithra",answer(q)),s.typing?450:0)});
+document.querySelectorAll(".suggestions button").forEach(b=>b.addEventListener("click",()=>{input.value=b.textContent;form.requestSubmit()}));
+document.querySelectorAll(".topic").forEach(b=>b.addEventListener("click",()=>{input.value=`Tell me about ${b.dataset.topic}`;form.requestSubmit()}));
+function clear(){saveChat([]);renderHistory();toast("Chat history cleared")}document.getElementById("clearChat")?.addEventListener("click",clear);document.getElementById("clearChatTop")?.addEventListener("click",clear);
+loadLessons().then(renderHistory);

@@ -1,1 +1,4 @@
-
+function applyTheme(theme){const actual=theme==="system"?(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):theme;document.documentElement.dataset.theme=actual;const b=document.getElementById("themeBtn");if(b)b.textContent=actual==="dark"?"☀":"☾"}
+function initTheme(){const s=getSettings();applyTheme(s.theme);document.getElementById("themeBtn")?.addEventListener("click",()=>{const s=getSettings();s.theme=(document.documentElement.dataset.theme==="dark"?"light":"dark");saveSettings(s);applyTheme(s.theme)})}
+function toast(text){const old=document.querySelector(".toast");old?.remove();const el=document.createElement("div");el.className="toast";el.textContent=text;document.body.appendChild(el);setTimeout(()=>el.remove(),1800)}
+document.addEventListener("DOMContentLoaded",initTheme);
