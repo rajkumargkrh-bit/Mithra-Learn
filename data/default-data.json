@@ -1,1 +1,50 @@
-
+{
+  "topics": [
+    {
+      "id": "science-001",
+      "title": "Photosynthesis",
+      "keywords": [
+        "photosynthesis",
+        "plants make food"
+      ],
+      "answer": "Photosynthesis is the process by which green plants make food using light energy, water, and carbon dioxide. Oxygen is released as a by-product."
+    },
+    {
+      "id": "math-001",
+      "title": "Percentage",
+      "keywords": [
+        "percentage",
+        "percent",
+        "percentage meaning"
+      ],
+      "answer": "A percentage is a way of expressing a number as a fraction of 100. For example, 25% means 25 out of 100, or 25/100."
+    },
+    {
+      "id": "english-001",
+      "title": "Noun",
+      "keywords": [
+        "noun",
+        "what is a noun"
+      ],
+      "answer": "A noun is a word used to name a person, place, thing, or idea. Examples include teacher, Chennai, book, and happiness."
+    },
+    {
+      "id": "computer-001",
+      "title": "HTML",
+      "keywords": [
+        "html",
+        "what is html"
+      ],
+      "answer": "HTML stands for HyperText Markup Language. It provides the structure and meaning of content on web pages using elements such as headings, paragraphs, links, and forms."
+    },
+    {
+      "id": "gk-001",
+      "title": "Earth",
+      "keywords": [
+        "earth",
+        "planet earth"
+      ],
+      "answer": "Earth is the third planet from the Sun. It has a liquid-water-rich surface and is currently the only planet known to support life."
+    }
+  ]
+}
