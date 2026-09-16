@@ -1,22 +1,23 @@
-# Mithra Learn-local
+# Mithra Learn-local V2 — Personal
 
-Version 1.0.0 — local-first learning assistant.
-
-## Run
-Open `index.html` in a browser. For browsers that block local JSON loading, use a simple local server such as VS Code Live Server.
+A mobile-first, single-user learning app. No backend, login or cloud database.
 
 ## Features
-- Local learning data from `data/default-data.json`
-- Browser Local Storage for chat/settings
+- Personal local chat
+- Local lesson library
+- Search
+- Saved lessons
+- Quick quiz
+- Progress tracking
 - Light/dark/system theme
-- Responsive UI
-- No backend required
+- JSON backup and restore
+- Local Storage
 
-## V1 storage keys
-- `mithra_settings`
-- `mithra_chat_history`
-- `mithra_saved_lessons`
-- `mithra_recent_topics`
+## Run on mobile
+Open `index.html` through a local/static web server or hosting that serves the `data/default-data.json` file. A static hosting service can be used; no backend is required.
 
-## Future
-Backend + database, AI API, secure accounts, cloud sync, progress tracking, quizzes and voice features.
+## Privacy
+V2 stores personal app data in the browser's Local Storage. Clearing browser/site data can remove it, so use Export Backup regularly.
+
+## Future optional upgrades
+AI API, voice input/output, PWA install/offline caching, richer notes and custom lesson creation.
