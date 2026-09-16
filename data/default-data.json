@@ -2,49 +2,63 @@
   "topics": [
     {
       "id": "science-001",
+      "category": "Science",
       "title": "Photosynthesis",
+      "description": "How green plants make food.",
       "keywords": [
         "photosynthesis",
         "plants make food"
       ],
-      "answer": "Photosynthesis is the process by which green plants make food using light energy, water, and carbon dioxide. Oxygen is released as a by-product."
+      "answer": "Photosynthesis is the process by which green plants make food using light energy, water and carbon dioxide. Oxygen is released as a by-product.",
+      "content": "Plants use light energy to convert water and carbon dioxide into glucose. Chlorophyll helps capture light energy. This process is important because it produces food for plants and releases oxygen."
     },
     {
       "id": "math-001",
+      "category": "Maths",
       "title": "Percentage",
+      "description": "Understand percentages simply.",
       "keywords": [
         "percentage",
-        "percent",
-        "percentage meaning"
+        "percent"
       ],
-      "answer": "A percentage is a way of expressing a number as a fraction of 100. For example, 25% means 25 out of 100, or 25/100."
+      "answer": "A percentage expresses a number as a fraction of 100. 25% means 25 out of 100.",
+      "content": "To find a percentage of a number, convert the percentage to a fraction over 100 and multiply. For example, 20% of 50 is (20/100) \u00d7 50 = 10."
     },
     {
       "id": "english-001",
-      "title": "Noun",
+      "category": "English",
+      "title": "Nouns",
+      "description": "Learn the basic idea of nouns.",
       "keywords": [
         "noun",
         "what is a noun"
       ],
-      "answer": "A noun is a word used to name a person, place, thing, or idea. Examples include teacher, Chennai, book, and happiness."
+      "answer": "A noun names a person, place, thing or idea.",
+      "content": "Examples include teacher, Chennai, book and happiness. Common nouns name general things, while proper nouns name specific people or places."
     },
     {
       "id": "computer-001",
-      "title": "HTML",
+      "category": "Computer",
+      "title": "HTML Basics",
+      "description": "Understand the role of HTML on the web.",
       "keywords": [
         "html",
         "what is html"
       ],
-      "answer": "HTML stands for HyperText Markup Language. It provides the structure and meaning of content on web pages using elements such as headings, paragraphs, links, and forms."
+      "answer": "HTML stands for HyperText Markup Language and provides structure for web pages.",
+      "content": "HTML uses elements such as headings, paragraphs, links, images and forms to describe the structure and meaning of web content."
     },
     {
       "id": "gk-001",
-      "title": "Earth",
+      "category": "General Knowledge",
+      "title": "Planet Earth",
+      "description": "A quick introduction to Earth.",
       "keywords": [
         "earth",
         "planet earth"
       ],
-      "answer": "Earth is the third planet from the Sun. It has a liquid-water-rich surface and is currently the only planet known to support life."
+      "answer": "Earth is the third planet from the Sun and is known to support life.",
+      "content": "Earth has a diverse surface, an atmosphere and abundant liquid water. It rotates on its axis and orbits the Sun."
     }
   ]
 }
