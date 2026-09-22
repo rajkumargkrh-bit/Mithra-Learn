@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mithra Video Editor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">M</span><div><b>MITHRA</b><small>VIDEO EDITOR</small></div></div>
+    <div class="top-actions">
+      <button id="openBtn" class="ghost">Open</button>
+      <button id="exportBtn" class="primary">Export</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="preview-panel">
+      <div class="preview-head"><span id="status">Ready</span><button id="fitBtn">⛶</button></div>
+      <div class="preview-wrap" id="previewWrap">
+        <video id="preview" playsinline controls></video>
+        <div id="emptyState" class="empty">
+          <div class="empty-icon">🎬</div>
+          <h2>Start a new project</h2>
+          <p>Your media stays on this device.</p>
+          <button id="newBtn" class="primary big">+ Add Video</button>
+        </div>
+        <div id="textOverlay" class="text-overlay hidden">Mithra Video</div>
+      </div>
+      <div class="transport">
+        <button id="playBtn">▶</button>
+        <input id="scrubber" type="range" min="0" max="100" value="0">
+        <span id="time">00:00 / 00:00</span>
+      </div>
+    </section>
+
+    <aside class="tools-panel">
+      <div class="section-title">TOOLS</div>
+      <div class="tool-grid">
+        <button data-tool="trim">✂️<span>Trim</span></button>
+        <button data-tool="split">▮<span>Split</span></button>
+        <button data-tool="music">🎵<span>Music</span></button>
+        <button data-tool="text">T<span>Text</span></button>
+        <button data-tool="effects">✨<span>Effects</span></button>
+        <button data-tool="speed">🐢<span>Speed</span></button>
+        <button data-tool="filter">🎨<span>Filter</span></button>
+        <button data-tool="volume">🔊<span>Volume</span></button>
+      </div>
+      <div class="settings-card">
+        <div><span>Speed</span><b id="speedValue">1×</b></div>
+        <input id="speed" type="range" min=".25" max="2" step=".25" value="1">
+      </div>
+      <div class="settings-card">
+        <div><span>Volume</span><b id="volumeValue">100%</b></div>
+        <input id="volume" type="range" min="0" max="1" step=".05" value="1">
+      </div>
+      <div id="toolMessage" class="tool-message">Select a tool to edit your project.</div>
+    </aside>
+  </main>
+
+  <section class="timeline-panel">
+    <div class="timeline-head">
+      <b>TIMELINE</b><span id="durationLabel">No media</span>
+    </div>
+    <div class="timeline">
+      <div class="track-label">VIDEO</div>
+      <div id="videoTrack" class="track"></div>
+    </div>
+    <div class="timeline">
+      <div class="track-label">TEXT</div>
+      <div class="track empty-track"></div>
+    </div>
+  </section>
+
+  <nav class="mobile-tools">
+    <button data-tool="trim">✂️<small>Trim</small></button>
+    <button data-tool="music">🎵<small>Music</small></button>
+    <button data-tool="text">T<small>Text</small></button>
+    <button data-tool="effects">✨<small>Effects</small></button>
+    <button data-tool="speed">🐢<small>Speed</small></button>
+  </nav>
+</div>
+
+<input id="videoInput" type="file" accept="video/*" hidden>
+<input id="audioInput" type="file" accept="audio/*" hidden>
+<script src="app.js"></script>
+</body>
+</html>
